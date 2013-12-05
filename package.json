@@ -15,6 +15,7 @@
     "async":"*",
     "passport":"*",
     "passport-local":"*",
-    "connect-flash":"*"
+    "connect-flash":"*",
+    "aws-sdk":"*"
   }
 }
