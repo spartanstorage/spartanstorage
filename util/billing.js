@@ -89,7 +89,7 @@ function calcBill(response,result) {
     }
     
     // convert from byte-ms to GB-month
-    var storage = (dataTransferIn - dataTransferOut)/1073741824*2.62974e9;
+    var storage = (dataTransferPUTS - dataTransferDELETES)/(1073741824*2.62974e9);
     
     var storageCost = STORAGE_RATE*storage;
     var accessCost = ACCESS_RATE * result.accessCount;
