@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/theme.css') 
+  script(src="javascripts/bootstrap.min.js")
+  script(src="javascripts/jquery.fileDownload.js")
+
+  div(class="container")
+      <!-- Static navbar -->
+      div(class="navbar navbar-default", role="navigation")
+        div(class="navbar-header")
+          a(class="navbar-brand") Spartan Storage
+        div(class="navbar-collapse collapse")
+          ul(class="nav navbar-nav navbar-right")
+            li
+                button(type="button", id="downloadBtn", class="btn btn-default btn")
+                    span(class="glyphicon glyphicon-cloud-download")
+            li
+                button(type="button", class="btn btn-default btn", data-toggle="modal", data-target="#myModal")
+                    span(class="glyphicon glyphicon-cloud-upload")
+            li
+                button(type="button", class="btn btn-default btn", id="deleteBtn")
+                    span(class="glyphicon glyphicon-remove")        
+            li(class="dropdown")
+              a(href="#", class="dropdown-toggle", data-toggle="dropdown") #{user.firstName} #{user.lastName}
+                b(class="caret")
+              ul(class="dropdown-menu")
+                li
+                    a(href="/billing") Current Bill
+                li(class="divider")
+                li
+                    a(href="/logout") Sign Out
+
+
+  div(class="container")
+    div(class="bs-example")
+        div(class="panel panel-default")
+            table(id="fileTable", class="table table-hover")
+              thead
+                tr
+                  th Name
+                  th Size (in bytes)
+                  th Last Modified
+              tbody
+                -for (var i = 0; i < files.length; i++) {
+                  tr(id=files[i].Key)
+                    td= files[i].Key
+                    td= files[i].Size
+                    td= files[i].LastModified
+                -}
+                             
+   div(class="modal fade", id="myModal", tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+      div(class="modal-dialog")
+        div(class="modal-content")
+          div(class="modal-header")
+            button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+            h4(class="modal-title", id="myModalLabel") Upload to Spartan Storage
+          div(class="modal-body")
+            //form(role="form" method="post", enctype="multipart/form-data", action="/upload")
+            //    input(type="file" name="myfile")
+            //    input(type="submit" value="Submit")
+            
+            form(role="form" method="post", enctype="multipart/form-data", action="/upload")
+              div(class="form-group")
+                input(type="file" id="myfile" name="myfile")
+              button(type="submit" class="btn btn-default") Submit
+                
+
+            //div(class="fileinput fileinput-new", data-provides="fileinput")
+            //  span(class="btn btn-default btn-file")
+            //    span(class="fileinput-new") Select file
+            //    span(class="fileinput-exists") Change
+            //    input(type="file" name="fileName")
+            //  span(class="fileinput-filename")
+            //  a(href="#", class="close fileinput-exists", data-dismiss="fileinput", style="float: none") &times;
+
+          //div(class="modal-footer")
+          //  button(id="uploadButton", type="button", class="btn btn-default btn-primary onclick=\"alert(\"hello\");\"") Upload File
+          //  button(type="button", class="btn", data-dismiss="modal") Close
+            
+    script(src="javascripts/listHelper.js")

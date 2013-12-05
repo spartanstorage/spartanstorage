@@ -1,0 +1,13 @@
+INSTALLATION
+
+Please install node and mongodb before installing this app.
+Start mongodb at localhost:27017
+
+To install app:
+npm install
+node app.js
+
+Please set the value in config/config.json correctly
+
+The app will be running on localhost:3000
+

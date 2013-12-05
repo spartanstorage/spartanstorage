@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/signin.css')
+
+  div(class="container")
+    form(class="form-signin" action="/login" method="post")
+        h2(class="form-signin-heading") Please sign in     
+        input(name="email", type="text", class="form-control", placeholder="Email address", required="", autofocus="")
+        input(name="password", type="password", class="form-control", placeholder="Password", required) 
+        label(class="checkbox")
+        button(class="btn btn-lg btn-primary btn-block", type="submit") Sign in

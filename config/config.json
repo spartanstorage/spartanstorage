@@ -1,0 +1,6 @@
+{ 
+"accessKeyId": "SET_TO_ACCESS_KEY", 
+"secretAccessKey": "SET_TO_SECRET_KEY",
+"productToken" : "SET_TO_PRODUCT_TOKEN",
+"region": "us-east-1" 
+}
